@@ -25,8 +25,7 @@
     <packaging>bundle</packaging>
     
     <name>JBoss Fuse :: Quickstarts :: camel-aws-s3-transfer</name>
-    <description>Camel Box.com Example</description>
-    <url>https://github.com/jboss-fuse/fuse-karaf/tree/master/quickstarts/camel/camel-box</url>
+    <description>Camel AWS S3 Example</description>
 
     <dependencies>
         <dependency>
