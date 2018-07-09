@@ -30,11 +30,7 @@
      <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-        <!-- versions of "subprojects" of JBoss Fuse -->
-        <version.org.apache.cxf>3.1.11.fuse-000186</version.org.apache.cxf>
-        <version.org.apache.karaf>4.2.0.fuse-000182</version.org.apache.karaf>
-
+        <version.fuse.bom>7.0.0.fuse-000027-redhat-1</version.fuse.bom>
         <!-- versions of Maven plugins -->
         <version.plugin.felix.maven-bundle-plugin>3.3.0</version.plugin.felix.maven-bundle-plugin>
         <version.plugin.mojo.build-helper-maven-plugin>3.0.0</version.plugin.mojo.build-helper-maven-plugin>
@@ -145,19 +141,15 @@
     </pluginRepositories>
 
     <dependencyManagement>
-        <dependencies>
-
-            <!-- Fuse BOM to import all non-plugin dependencies -->
-
-            <dependency>
-                <groupId>org.jboss.fuse</groupId>
-                <artifactId>jboss-fuse-parent</artifactId>
-                <version>7.0.0.fuse-000151</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-
-        </dependencies>
+    <dependencies>
+      <dependency>
+        <groupId>org.jboss.redhat-fuse</groupId>
+        <artifactId>fuse-karaf-bom</artifactId>
+        <version>${version.fuse.bom}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
     </dependencyManagement>
 
     <build>
@@ -202,17 +194,14 @@
                 <plugin>
                     <groupId>org.apache.cxf</groupId>
                     <artifactId>cxf-java2ws-plugin</artifactId>
-                    <version>${version.org.apache.cxf}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.cxf</groupId>
                     <artifactId>cxf-java2swagger-plugin</artifactId>
-                    <version>${version.org.apache.cxf}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.cxf</groupId>
                     <artifactId>cxf-codegen-plugin</artifactId>
-                    <version>${version.org.apache.cxf}</version>
                 </plugin>
 
                 <!-- Felix plugins -->
@@ -220,7 +209,6 @@
                 <plugin>
                     <groupId>org.apache.felix</groupId>
                     <artifactId>maven-bundle-plugin</artifactId>
-                    <version>${version.plugin.felix.maven-bundle-plugin}</version>
                     <extensions>true</extensions>
                 </plugin>
 
@@ -229,7 +217,6 @@
                 <plugin>
                     <groupId>org.apache.karaf.tooling</groupId>
                     <artifactId>karaf-maven-plugin</artifactId>
-                    <version>${version.org.apache.karaf}</version>
                 </plugin>
 
                 <!-- MojoHaus plugins -->
@@ -237,7 +224,6 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
-                    <version>${version.plugin.mojo.build-helper-maven-plugin}</version>
                 </plugin>
 
             </plugins>
@@ -260,7 +246,6 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-                <version>${version.plugin.felix.maven-bundle-plugin}</version>
                 <inherited>true</inherited>
                 <extensions>true</extensions>
                 <configuration>
